@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%=title%></title>
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <script src="/js/jquery.min.js"></script>
+
+    <script src="/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/app.css">
+
+    <script type="text/javascript">
+        // Prevent dropdown menu from closing when click inside the form
+        $(document).on("click", ".navbar-right .dropdown-menu", function (e) {
+            e.stopPropagation();
+        });
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-expand-lg navbar-light">
+        <div class="navbar-header d-flex col">
+            <a class="navbar-brand" href="#"><b>Rentomojo</b></a>
+
+        </div>
+        <!-- Collection of nav links, forms, and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+
+            <ul class="nav navbar-nav navbar-right ml-auto">
+                    <%if(!isauth){%>
+                <li class="nav-item mr-3">
+                    <a href="/login" class="btn btn-primary  get-started-btn mt-1 mb-1">Login</a>
+
+                </li>
+                <li class="nav-item">
+                    <a href="/signup" class="btn btn-primary get-started-btn mt-1 mb-1">Sign up</a>
+
+                </li>
+                <%}%>
+                <%if(isauth){%>
+                <li class="nav-item">
+                    <a href="/logout" class="btn btn-primary get-started-btn mt-1 mb-1">Logout</a>
+
+                </li>
+                <%}%>
+            </ul>
+        </div>
+    </nav>
+    <div class="d-flex justify-content-center">
+  
+    <form action="/login" method="POST">
+            <%if(flash){%>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-danger"><%=flash%></li>
+                </ul>
+                <%}%>
+        <div class="form-group mt-5">
+            <label>Email address</label>
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Enter email">
+           
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+      
+
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+</body>
+
+</html>
